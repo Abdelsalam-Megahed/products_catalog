@@ -65,7 +65,7 @@ class Handler extends ExceptionHandler
             ], Response::HTTP_NOT_FOUND);
         }
 
-//        dd($exception);
+        dd($exception);
         return parent::render($request, $exception);
     }
 }

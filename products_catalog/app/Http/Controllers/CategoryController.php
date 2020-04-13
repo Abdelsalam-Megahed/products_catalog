@@ -16,7 +16,9 @@ class CategoryController extends Controller
 
     public function show($id)
     {
-        return Category::find($id);
+        $category = Category::find($id);
+        $category->products;
+        return $category;
     }
 
     public function store(Request $request)
@@ -36,8 +38,18 @@ class CategoryController extends Controller
     public function delete(Request $request, $id)
     {
         $category = Category::findOrFail($id);
-        $category->delete();
+        $count = count($category->products);
 
-        return response()->json(["status_code", Response::HTTP_NO_CONTENT]);
+        if($count == 0){
+            $category->delete();
+            return response()->json(["status_code" => Response::HTTP_NO_CONTENT]);
+        }
+        else{
+            return response()->json([
+                "error" =>
+                "You cannot delete category that has more than one product"],
+                Response::HTTP_FORBIDDEN);
+        }
+
     }
 }
