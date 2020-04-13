@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->float('price');
             $table->integer('quantity');
             $table->boolean('in_stock');
+            $table->float('rating');
             //category foreign key
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
