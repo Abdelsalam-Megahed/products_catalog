@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Product;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,19 +22,6 @@ class ProductController extends Controller
             return response()->json(['error' => 'Record not found'], Response::HTTP_NOT_FOUND);
         }
         return Product::find($id);
-    }
-
-    public function validateRequest(Request $request){
-        $rules = [
-            'name' => 'required|min:3',
-            'description' => 'required|min:20',
-            'price','quantity', 'rating' => 'required|Numeric',
-            'in_stock' => 'required|boolean',
-            'category_id' =>'required|integer'
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-        return $validator;
     }
 
     public function store(Request $request)
