@@ -32,7 +32,7 @@ class ProductController extends Controller
             'price','rating' => 'required|Numeric',
             'quantity' => 'required|integer',
             'in_stock' => 'required|boolean',
-            'category_id' =>'required|integer'
+            'category_id' =>'required|exists:categories,id'
         ];
             $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
@@ -51,7 +51,7 @@ class ProductController extends Controller
             'price','rating' => 'Numeric',
             'quantity' => 'integer',
             'in_stock' => 'boolean',
-            'category_id' =>'integer'
+            'category_id' =>'exists:categories,id'
         ];
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
