@@ -3,15 +3,20 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::group(['prefix' => 'categories'], function (){
+    Route::get('/', 'CategoryController@index')->name('categories');
+    Route::get('/{id}', 'CategoryController@show')->name('categories.show');
+    Route::post('/', 'CategoryController@store')->name('categories.store');
+    Route::put('/{id}', 'CategoryController@update')->name('categories.update');
+    Route::delete('/{id}', 'CategoryController@delete')->name('categories.delete');
+});
 
-Route::get('categories', 'CategoryController@index');
-Route::get('categories/{id}', 'CategoryController@show');
-Route::post('categories', 'CategoryController@store');
-Route::put('categories/{id}', 'CategoryController@update');
-Route::delete('categories/{id}', 'CategoryController@delete');
 
-Route::get('products', 'ProductController@index');
-Route::get('products/{id}', 'ProductController@show');
-Route::post('products', 'ProductController@store');
-Route::put('products/{id}', 'ProductController@update');
-Route::delete('products/{id}', 'ProductController@delete');
+Route::group(['prefix' => 'products'], function (){
+    Route::get('/', 'ProductController@index')->name('products');
+    Route::get('/{id}', 'ProductController@show')->name('products.show');
+    Route::post('/', 'ProductController@store')->name('products.store');
+    Route::put('/{id}', 'ProductController@update')->name('products.update');
+    Route::delete('/{id}', 'ProductController@delete')->name('products.delete');
+});
+

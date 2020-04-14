@@ -35,7 +35,7 @@ class CategoryController extends Controller
         }
 
         $category = Category::create($request->all());
-        return response()->json([$category , Response::HTTP_CREATED]);
+        return response()->json($category, Response::HTTP_CREATED);
     }
 
     public function update(Request $request, $id)
