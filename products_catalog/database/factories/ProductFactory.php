@@ -8,11 +8,10 @@ use App\Product;
 $factory->define(Product::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'description' => $faker->description,
-        'price' => $faker->price,
-        'quantity' => $faker->quantity,
-        'in_stock' => $faker->in_stock,
-        'rating' => $faker->rating,
-        'category_id' => $faker->category_id
+        'description' => $faker->paragraph,
+        'price' => $faker->randomDigit,
+        'quantity' => $faker->numberBetween($min = 10, $max = 900),
+        'in_stock' => $faker->boolean,
+        'rating' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 5)
     ];
 });

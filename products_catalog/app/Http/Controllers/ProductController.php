@@ -34,13 +34,13 @@ class ProductController extends Controller
             'in_stock' => 'required|boolean',
             'category_id' =>'required|integer'
         ];
-        $validator = Validator::make($request->all(), $rules);
+            $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
             return response()->json(["error" => $validator->errors()], Response::HTTP_BAD_REQUEST);
         }
 
         $product = Product::create($request->all());
-        return response()->json([$product], Response::HTTP_CREATED);
+        return response()->json($product, Response::HTTP_CREATED);
     }
 
     public function update(Request $request, $id)

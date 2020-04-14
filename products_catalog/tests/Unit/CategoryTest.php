@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use App\Category;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class CategoryTest extends TestCase
@@ -31,7 +30,7 @@ class CategoryTest extends TestCase
 
     public function test_can_create_category() {
         $data = [
-            "name" => "Books",
+            "name" => $this->faker->name,
         ];
 
         $this->post(route('categories.store'), $data)
