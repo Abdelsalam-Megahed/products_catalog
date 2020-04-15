@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Category;
-use App\Product;
+use App\Models\Category;
+use App\Models\Product;
 use Tests\TestCase;
 
 class ProductTest extends TestCase
@@ -20,7 +20,7 @@ class ProductTest extends TestCase
             ->assertStatus(200)
             ->assertJson($products->toArray())
             ->assertJsonStructure([
-                '*' => ['id', 'name', 'price', 'quantity', 'in_stock', 'rating', 'category_id', 'id'],
+                '*' => ['id', 'name', 'price', 'quantity', 'in_stock', 'rating', 'category_id'],
             ]);
     }
 
